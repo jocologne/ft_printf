@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcologne <jcologne@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jcologne <jcologne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:22:37 by jcologne          #+#    #+#             */
-/*   Updated: 2024/11/08 08:40:30 by jcologne         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:59:06 by jcologne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,46 @@
 
 static int	num_len(int n)
 {
-	int	len;
+	int	i;
 
-	len = 1;
-	while (n / 10 != 0)
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		n = -n;
+	while (n > 0)
 	{
-		n /= 10;
-		len++;
+		n = n / 10;
+		i++;
 	}
-	return (len);
+	return (i);
+}
+
+static void put_digits(int n)
+{
+	if (n >= 10)
+		put_digits(n / 10);
+	put_char((n % 10) + 48);
 }
 
 int	put_num(int n)
 {
-	char		*str;
-	int			len;
-	long		num;
-	int			sign;
+	long	num;
+	int		len;
 
 	num = n;
-	sign = (num < 0);
-	if (sign)
-		num = -num;
-	len = num_len(num) + sign;
-	str = (char *)malloc(len + 1);
-	str[len] = '\0';
-	while (len-- > sign)
+	if (n == -2147483648)
 	{
-		str[len] = (num % 10) + '0';
-		num /= 10;
+		write (1, "-2147483648", 11);
+		return (11);
 	}
-	if (sign)
-		str[0] = '-';
-	return (put_str(str));
+	len = num_len(n);
+	if (n < 0)
+	{
+		write (1, "-", 1);
+		n = -n;
+		len++;
+	}
+	put_digits (n);
+	return (len);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcologne <jcologne@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jcologne <jcologne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:46:02 by jcologne          #+#    #+#             */
-/*   Updated: 2024/11/08 10:53:13 by jcologne         ###   ########.fr       */
+/*   Updated: 2024/11/09 09:37:01 by jcologne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ int	ft_printf(const char *s, ...)
 	return (len);
 }
 
+/*
 int main(void)
 {
 	int a = ft_printf("1234 %% %c %s %i %d", 'A', "BC", -2, 333);
 	printf("\n");
 	int b =    printf("1234 %% %c %s %i %d", 'A', "BC", -2, 333);
 	printf("\n%d %d", a, b);
-}
+}*/

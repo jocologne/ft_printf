@@ -1,6 +1,6 @@
+NAME:= libftprintf.a
 CC:= cc
 CFLAGS:= -Wall -Wextra -Werror
-NAME:= libftprintf.a
 HDR:= ftprintf.h
 
 SRC_FILES:=	ft_printf.c \
