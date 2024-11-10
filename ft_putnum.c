@@ -3,57 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcologne <jcologne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcologne <jcologne@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 08:22:37 by jcologne          #+#    #+#             */
-/*   Updated: 2024/11/09 10:59:06 by jcologne         ###   ########.fr       */
+/*   Updated: 2024/11/10 06:05:33 by jcologne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	num_len(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		n = -n;
-	while (n > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
-
-static void put_digits(int n)
-{
-	if (n >= 10)
-		put_digits(n / 10);
-	put_char((n % 10) + 48);
-}
-
 int	put_num(int n)
 {
-	long	num;
 	int		len;
 
-	num = n;
+	len = 0;
 	if (n == -2147483648)
-	{
-		write (1, "-2147483648", 11);
-		return (11);
-	}
-	len = num_len(n);
+		return (put_str("-2147483648"));
 	if (n < 0)
 	{
-		write (1, "-", 1);
+		len += put_char('-');
 		n = -n;
-		len++;
 	}
-	put_digits (n);
+	if (n >= 10)
+		len += put_num(n / 10);
+	len += put_char((n % 10) + 48);
 	return (len);
 }
+
+/*int main(void)
+{
+	int num = 101;
+	int a = put_num(num);
+	printf("\n");
+	int b = printf("%d", num);
+	printf("\n");
+	printf("meu_%d org_%d\n", a, b);
+
+}*/
