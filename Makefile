@@ -6,7 +6,8 @@ HDR:= ftprintf.h
 SRC_FILES:=	ft_printf.c \
 				ft_putchar.c \
 				ft_putstr.c \
-				ft_putnum.c
+				ft_putnum.c \
+				ft_puthexa.c
 				
 OBJ_FILES:= $(SRC_FILES:.c=.o)
 

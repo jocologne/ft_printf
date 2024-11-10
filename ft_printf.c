@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcologne <jcologne@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcologne <jcologne@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:46:02 by jcologne          #+#    #+#             */
-/*   Updated: 2024/11/09 09:37:01 by jcologne         ###   ########.fr       */
+/*   Updated: 2024/11/10 08:00:40 by jcologne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	type(char c, va_list args)
+static int	type(char c, va_list list)
 {
 	int	len;
 
@@ -20,11 +20,17 @@ static int	type(char c, va_list args)
 	if (c == '%')
 		len += put_char('%');
 	if (c == 'c')
-		len += put_char(va_arg(args, int));
+		len += put_char(va_arg(list, int));
 	if (c == 's')
-		len += put_str(va_arg(args, char *));
+		len += put_str(va_arg(list, char *));
 	if (c == 'i' || c == 'd')
-		len += put_num(va_arg(args, int));
+		len += put_int(va_arg(list, int));
+	if (c == 'x' || c == 'X')
+		len += put_hexa(va_arg(list, unsigned long), c);
+	if (c == 'p')
+		len += put_pnt(va_arg(list, unsigned long));
+	if (c == 'u')
+		len += put_uns(va_arg(list, unsigned int));
 	return (len);
 }
 
