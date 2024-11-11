@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcologne <jcologne@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jcologne <jcologne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 08:46:02 by jcologne          #+#    #+#             */
-/*   Updated: 2024/11/10 08:00:40 by jcologne         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:42:09 by jcologne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	type(char c, va_list list)
 	if (c == 'i' || c == 'd')
 		len += put_int(va_arg(list, int));
 	if (c == 'x' || c == 'X')
-		len += put_hexa(va_arg(list, unsigned long), c);
+		len += put_hexa(va_arg(list, unsigned int), c);
 	if (c == 'p')
 		len += put_pnt(va_arg(list, unsigned long));
 	if (c == 'u')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthexa.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcologne <jcologne@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jcologne <jcologne@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 06:09:06 by jcologne          #+#    #+#             */
-/*   Updated: 2024/11/10 08:01:16 by jcologne         ###   ########.fr       */
+/*   Updated: 2024/11/11 13:46:49 by jcologne         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,26 @@ int	put_pnt(unsigned long pnt)
 	int	len;
 
 	len = 0;
+	if (pnt == 0)
+		return (put_str("(nil)"));
 	len += put_str("0x");
 	len += put_hexa(pnt, 'x');
 	return (len);
 }
 
-/*int main(void)
+/*#include <stdio.h>
+#include <limits.h>
+int main(void)
 {
-	int num = 424253;
+	long num = LONG_MIN;
 	int a = put_hexa(num, 'x');
 	printf("\n");
-	int b = printf("%x", num);
+	int b = printf("%lx", num);
 	printf("\n");
 	printf("meu_%d org_%d\n", a, b);
-	int c = printf("%p", &num);
-	printf("\n");
-	int d = put_pnt(&num);
-	printf("\n");
-	printf("meu_%d org_%d\n", d, c);
+	// int c = printf("%p", 0);
+	// printf("\n");
+	// int d = put_pnt(0);
+	// printf("\n");
+	// printf("meu_%d org_%d\n", d, c);
 }*/
